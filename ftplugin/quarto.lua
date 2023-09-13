@@ -6,3 +6,5 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap("n", "<Leader>kp", ":silent! !zathura %:r.pdf &<CR>", { noremap = true, silent = true })
+
+vim.opt.spell = true
