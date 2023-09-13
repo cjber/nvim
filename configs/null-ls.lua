@@ -8,8 +8,9 @@ local sources = {
   b.formatting.stylua,
 
   -- python
+  b.diagnostics.ruff,
   b.formatting.black,
-  b.formatting.isort.with { extra_args = { "--float_to_top", "-m=3" } },
+  b.formatting.isort.with { extra_args = { "--float-to-top", "-m=3" } },
 
   -- bash
   b.formatting.beautysh,
