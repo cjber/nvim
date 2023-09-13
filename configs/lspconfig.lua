@@ -1,9 +1,7 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
-vim.diagnostic.config {
-  virtual_text = false,
-}
+vim.diagnostic.config { virtual_text = false }
 
 local lspconfig = require "lspconfig"
 
@@ -31,18 +29,6 @@ lspconfig.ltex.setup {
   },
 }
 
--- lspconfig.pyright.setup {
---   settings = {
---     python = {
---       analysis = {
---         diagnosticMode = "openFilesOnly",
---         useLibraryCodeForTypes = true,
---         typeCheckingMode = "off",
---       },
---     },
---   },
--- }
-
 lspconfig.pylsp.setup {
   settings = {
     pylsp = {
@@ -51,6 +37,9 @@ lspconfig.pylsp.setup {
         pyflakes = { enabled = false },
         pydocstyle = { enabled = false },
         pylint = { enabled = false },
+        mccabe = { enabled = false },
+        autopep8 = { enabled = false },
+        yapf = { enabled = false },
       },
     },
   },
