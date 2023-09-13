@@ -4,7 +4,6 @@ local overrides = require "custom.configs.overrides"
 local plugins = {
 
   -- Override plugin definition options
-
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -19,7 +18,8 @@ local plugins = {
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
-    end, -- Override to setup mason-lspconfig
+      require("core.utils").load_mappings "lspconfig"
+    end,
   },
 
   -- override plugin configs
@@ -38,16 +38,19 @@ local plugins = {
     opts = overrides.nvimtree,
   },
 
-  -- Install a plugin
   {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("better_escape").setup()
-    end,
+    "nvim-telescope/telescope.nvim",
+    opts = overrides.telescope,
   },
 
-  { "smoka7/hop.nvim", lazy = false, opts = {} },
+  {
+    "smoka7/hop.nvim",
+    lazy = false,
+    config = function(_, opts)
+      require("core.utils").load_mappings "hop"
+      require("hop").setup()
+    end,
+  },
 
   {
     "ahmedkhalf/project.nvim",
@@ -58,24 +61,27 @@ local plugins = {
   },
 
   -- imports
-  { import = "custom.configs.extras.copilot" },
-  { import = "custom.configs.extras.trouble" },
   { import = "custom.configs.extras.ufo" },
   { import = "custom.configs.extras.yarepl" },
 
   -- nvcommunity
   "NvChad/nvcommunity",
+  { import = "nvcommunity.diagnostics.trouble" },
+  { import = "nvcommunity.completion.copilot" },
   { import = "nvcommunity.editor.treesittercontext" },
   { import = "nvcommunity.editor.autosave" },
 
+  {
+    "folke/trouble.nvim",
+    event = "LspAttach",
+    config = function(_, _)
+      require("trouble").setup()
+      require("core.utils").load_mappings "trouble"
+    end,
+  },
+
   -- disabled
   { "lewis6991/gitsigns.nvim", enabled = false },
-
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
 
   -- All NvChad plugins are lazy-loaded by default
   -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
