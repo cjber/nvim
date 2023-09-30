@@ -9,6 +9,7 @@ M.disabled = {
     ["<leader>b"] = "",
     ["<leader>x"] = "",
     ["<leader>n"] = "",
+    ["<leader>f"] = "",
     ["<leader>/"] = "",
 
     ["<leader>fm"] = "",
@@ -26,8 +27,6 @@ M.general = {
     ["q:"] = { "<CMD>q" },
     ["Q"] = { "<Nop>" },
     ["M"] = { "<CMD>join<CR>" },
-    ["n"] = { "nzzzv" },
-    ["N"] = { "Nzzzv" },
     ["J"] = { "}" },
     ["K"] = { "{" },
     ["H"] = { "^" },
@@ -41,9 +40,21 @@ M.general = {
     ["<Down>"] = { "<CMD>resize -2<CR>" },
     ["<C-space>"] = { "<CMD>bnext<CR>" },
 
+    --hlslens
+    ["n"] = { [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]] },
+    ["N"] = {
+      [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+    },
+    ["*"] = { [[*<Cmd>lua require('hlslens').start()<CR>]] },
+    ["#"] = { [[#<Cmd>lua require('hlslens').start()<CR>]] },
+
     -- spell
     ["<leader>ss"] = { "<CMD>set invspell<CR>" },
     ["<leader>sf"] = { "ma[s1z=`a" },
+
+    -- buffers
+    ["<leader>bo"] = { [[<CMD>lua require("close_buffers").delete({type="other"})<CR>]], "close other" },
+    ["<leader>bd"] = { [[<CMD>lua require("close_buffers").delete({type="this"})<CR>]], "close buffer" },
   },
 
   v = {
@@ -60,6 +71,7 @@ M.general = {
 M.lspconfig = {
   plugin = true,
   n = {
+    ["<C-k>"] = { "<CMD>lua vim.lsp.buf.hover()<CR>", "hover" },
     ["<leader>lf"] = { "<CMD>lua vim.lsp.buf.format()<CR>", "format" },
     ["<leader>la"] = { "<CMD>lua vim.lsp.buf.code_action()<CR>", "code action" },
     ["<leader>lr"] = {
@@ -100,6 +112,37 @@ M.trouble = {
   plugin = true,
   n = {
     ["<leader>le"] = { "<CMD>TroubleToggle<CR>" },
+  },
+}
+
+M.undo = {
+  plugin = true,
+  n = {
+    ["<leader>fu"] = { [[<CMD>lua require("undotree").toggle()<CR>]] },
+  },
+}
+
+M.jupynium = {
+  plugin = true,
+  n = {
+    ["<leader>x"] = { [[<CMD>JupyniumExecuteSelectedCells<CR>]] },
+    ["<leader>s"] = { [[<CMD>JupyniumStartAndAttachToServerInTerminal<CR>]] },
+    ["<leader>d"] = {
+      function()
+        local filename_wo_ext = vim.fn.expand "%:r:r"
+        vim.cmd([[JupyniumStartSync ]] .. filename_wo_ext)
+      end,
+    },
+    ["<leader>c"] = { [[<CMD>JupyniumStopSync<CR>]] },
+    ["<leader>m"] = { [[<CMD>JupyniumShortsightedToggle<CR>]] },
+  },
+}
+
+M.ufo = {
+  plugin = true,
+  n = {
+    ["zR"] = { [[<CMD>lua require("ufo").openAllFolds()<CR>]] },
+    ["zM"] = { [[<CMD>lua require("ufo").closeAllFolds()<CR>]] },
   },
 }
 

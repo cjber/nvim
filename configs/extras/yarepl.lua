@@ -1,10 +1,10 @@
 local spec = {
   "milanglacier/yarepl.nvim",
-  ft = "python",
+  ft = { "python", "quarto" },
   config = function()
     local yarepl = require "yarepl"
 
-    yarepl.setup {}
+    yarepl.setup { metas = { quarto = { cmd = "ipython", formatter = yarepl.trim_empty_lines } } }
 
     vim.api.nvim_create_user_command("REPLToCurLine", function(opts)
       local id = opts.count

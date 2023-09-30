@@ -29,6 +29,11 @@ local plugins = {
   },
 
   {
+    "hrsh7th/nvim-cmp",
+    opts = overrides.cmp,
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter,
   },
@@ -63,6 +68,7 @@ local plugins = {
   -- imports
   { import = "custom.configs.extras.ufo" },
   { import = "custom.configs.extras.yarepl" },
+  -- { import = "custom.configs.extras.quarto-nvim" },
 
   -- nvcommunity
   "NvChad/nvcommunity",
@@ -77,6 +83,45 @@ local plugins = {
     config = function(_, _)
       require("trouble").setup()
       require("core.utils").load_mappings "trouble"
+    end,
+  },
+
+  {
+    "kevinhwang91/nvim-fundo",
+    lazy = false,
+    config = function()
+      require("fundo").install()
+    end,
+  },
+
+  { "kevinhwang91/nvim-hlslens", opts = {} },
+
+  {
+    "jiaoshijie/undotree",
+    lazy = false,
+    config = function()
+      require("undotree").setup {}
+      require("core.utils").load_mappings "undo"
+    end,
+  },
+
+  { "kylechui/nvim-surround", event = "VeryLazy", opts = {} },
+
+  { "kazhala/close-buffers.nvim", event = "VeryLazy", opts = {} },
+
+  {
+    "kiyoon/jupynium.nvim",
+    build = "pip3 install .",
+    enabled = vim.fn.isdirectory(vim.fn.expand "~/.config/nvim/.venv"),
+    event = "BufWinEnter *.ju.py",
+    config = function()
+      local jupynium = require "jupynium"
+      jupynium.setup {
+        use_default_keybindings = false,
+        auto_start_server = { enable = true },
+        auto_start_sync = { enable = true },
+      }
+      require("core.utils").load_mappings "jupynium"
     end,
   },
 

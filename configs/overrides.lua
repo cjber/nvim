@@ -54,6 +54,18 @@ M.mason = {
   },
 }
 
+M.cmp = {
+  sources = {
+    -- { name = "otter" },
+    { name = "jupynium" },
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "buffer" },
+    { name = "nvim_lua" },
+    { name = "path" },
+  },
+}
+
 -- git support in nvimtree
 M.nvimtree = {
   git = {
