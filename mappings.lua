@@ -53,7 +53,10 @@ M.general = {
     ["<leader>sf"] = { "ma[s1z=`a" },
 
     -- buffers
-    ["<leader>bo"] = { [[<CMD>lua require("close_buffers").delete({type="other"})<CR>]], "close other" },
+    ["<leader>bo"] = {
+      [[<CMD>lua require("close_buffers").delete({type="other"})<CR><CMD>silent on<CR>]],
+      "close other",
+    },
     ["<leader>bd"] = { [[<CMD>lua require("close_buffers").delete({type="this"})<CR>]], "close buffer" },
   },
 
@@ -71,7 +74,7 @@ M.general = {
 M.lspconfig = {
   plugin = true,
   n = {
-    ["<C-k>"] = { "<CMD>lua vim.lsp.buf.hover()<CR>", "hover" },
+    ["<M-k>"] = { "<CMD>lua vim.lsp.buf.hover()<CR>", "hover" },
     ["<leader>lf"] = { "<CMD>lua vim.lsp.buf.format()<CR>", "format" },
     ["<leader>la"] = { "<CMD>lua vim.lsp.buf.code_action()<CR>", "code action" },
     ["<leader>lr"] = {

@@ -36,10 +36,24 @@ opt.undofile = true
 opt.writebackup = false
 
 -- folds
-opt.foldcolumn = "0"
-opt.foldnestmax = 1
+-- opt.numberwidth = 4
+opt.fillchars = {
+  fold = " ",
+  foldopen = "",
+  foldclose = "",
+  foldsep = " ", -- or "│" to use bar for show fold area
+
+}
+opt.foldcolumn = "1"
+-- opt.foldnestmax = 2
 opt.foldlevel = 99
 opt.foldlevelstart = 99
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldtext = require "custom.modules.foldtext"
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- opt.statuscolumn = "%l %C "
 
 -- spell
 opt.spelllang = "en_gb"

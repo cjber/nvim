@@ -1,6 +1,6 @@
-local null_ls = require "null-ls"
+local none_ls = require "null-ls"
 
-local b = null_ls.builtins
+local b = none_ls.builtins
 
 local sources = {
 
@@ -14,9 +14,14 @@ local sources = {
 
   -- bash
   b.formatting.beautysh,
+
+  -- sql
+  -- b.diagnostics.sqlfluff.with {
+  --   extra_args = { "--dialect", "duckdb" }, -- change to your dialect
+  -- },
 }
 
-null_ls.setup {
+none_ls.setup {
   debug = true,
   sources = sources,
 }

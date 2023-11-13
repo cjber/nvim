@@ -10,7 +10,10 @@ M.override = {
     italic = true,
   },
   CursorLine = {
-    bg = {"black", 5},
+    bg = { "black", 5 },
+  },
+  FoldColumn = {
+    bg = "black",
   },
 }
 

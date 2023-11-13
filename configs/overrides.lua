@@ -8,6 +8,8 @@ M.treesitter = {
     "markdown_inline",
     "python",
     "yaml",
+    "sql",
+    "query",
   },
   indent = {
     enable = true,
@@ -51,12 +53,17 @@ M.mason = {
     -- bash
     "bash-language-server",
     "beautysh",
+
+    -- sql
+    "sqlls",
+    "sqlfluff",
   },
 }
 
 M.cmp = {
   sources = {
     -- { name = "otter" },
+    { name = "pandoc_references" },
     { name = "jupynium" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
