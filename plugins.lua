@@ -148,6 +148,8 @@ local plugins = {
   },
 
   { "freitass/todo.txt-vim", lazy = false, event = "BufWinEnter Todo.txt" },
+  { "folke/todo-comments.nvim", cmd = "TodoTrouble", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
+  { "Dronakurl/injectme.nvim", lazy = false },
 
   -- disabled
   { "lewis6991/gitsigns.nvim", enabled = false },
