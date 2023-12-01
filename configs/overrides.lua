@@ -17,6 +17,9 @@ M.treesitter = {
     --   "python"
     -- },
   },
+  highlight = {
+    enable = true,
+  },
 }
 
 M.telescope = {
@@ -42,6 +45,7 @@ M.mason = {
     "stylua",
 
     -- python
+    "sourcery",
     "python-lsp-server",
     "ruff",
     "isort",
@@ -49,6 +53,7 @@ M.mason = {
 
     -- writing
     "ltex-ls",
+    "grammarly-languageserver",
 
     -- bash
     "bash-language-server",

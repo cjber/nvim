@@ -45,7 +45,7 @@ opt.fillchars = {
 
 }
 opt.foldcolumn = "1"
--- opt.foldnestmax = 2
+opt.foldnestmax = 1
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldmethod = "expr"
