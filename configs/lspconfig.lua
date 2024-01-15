@@ -3,7 +3,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 vim.diagnostic.config { virtual_text = false, float = { source = "if_many" } }
 
-local signs = { Error = ".", Warn = ".", Hint = ".", Info = "." }
+local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -14,7 +14,8 @@ local lspconfig = require "lspconfig"
 -- if you just want default config for the servers then put them in a table
 local servers = {
   -- python
-  "pylsp",
+  -- "pylsp",
+  "ruff_lsp",
   "sourcery",
   -- quarto
   "ltex",
@@ -48,7 +49,7 @@ lspconfig.ltex.setup {
 lspconfig.grammarly.setup {
   filetypes = { "tex", "markdown", "rmd", "quarto" },
   init_options = {
-    clientId = "client_BaDkMgx4X19X9UxxYRCXZo"
+    clientId = "client_BaDkMgx4X19X9UxxYRCXZo",
   },
 }
 
