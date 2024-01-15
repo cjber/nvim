@@ -59,22 +59,15 @@ M.mason = {
     "bash-language-server",
     "beautysh",
 
+    -- json
+    "fixjson",
+
+    -- toml
+    "taplo",
+
     -- sql
     "sqlls",
     "sqlfluff",
-  },
-}
-
-M.cmp = {
-  sources = {
-    -- { name = "otter" },
-    { name = "pandoc_references" },
-    { name = "jupynium" },
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "buffer" },
-    { name = "nvim_lua" },
-    { name = "path" },
   },
 }
 
