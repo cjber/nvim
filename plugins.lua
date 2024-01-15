@@ -7,13 +7,22 @@ local plugins = {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      -- format & linting
       {
-        "nvimtools/none-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
+        "stevearc/conform.nvim",
+        opts = {
+          formatters_by_ft = {
+            lua = { "stylua" },
+            python = { "ruff_format" },
+          },
+        },
       },
+      -- format & linting
+      -- {
+      --   "nvimtools/none-ls.nvim",
+      --   config = function()
+      --     require "custom.configs.null-ls"
+      --   end,
+      -- },
     },
     config = function()
       require "plugins.configs.lspconfig"
@@ -23,15 +32,35 @@ local plugins = {
   },
 
   -- override plugin configs
-  {
-    "williamboman/mason.nvim",
-    opts = overrides.mason,
-  },
+  -- {
+  --   "williamboman/mason.nvim",
+  --   opts = overrides.mason,
+  -- },
 
   {
     "hrsh7th/nvim-cmp",
-    dependencies = { "jc-doyle/cmp-pandoc-references" },
-    opts = overrides.cmp,
+    dependencies = { "hrsh7th/cmp-nvim-lsp-signature-help" },
+    sources = {
+      { name = "jupynium" },
+      { name = "nvim_lsp" },
+      { name = "nvim_lsp_signature_help" },
+      { name = "luasnip" },
+      { name = "buffer" },
+      { name = "nvim_lua" },
+      { name = "path" },
+    },
+    opts = function()
+      local opts = require "plugins.configs.cmp"
+      local cmp = require "cmp"
+
+      opts.completion = {
+        completeopt = "menu,menuone,noselect,noinsert",
+      }
+
+      opts.mapping["<CR>"] = cmp.mapping.confirm { select = false }
+
+      return opts
+    end,
   },
 
   {
@@ -148,11 +177,32 @@ local plugins = {
   },
 
   { "freitass/todo.txt-vim", lazy = false, event = "BufWinEnter Todo.txt" },
-  { "folke/todo-comments.nvim", cmd = "TodoTrouble", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
+  {
+    "folke/todo-comments.nvim",
+    ft = { "python" },
+    cmd = "TodoTrouble",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
   { "Dronakurl/injectme.nvim", lazy = false },
 
   -- disabled
   { "lewis6991/gitsigns.nvim", enabled = false },
+  --  {
+  --    "jackmort/chatgpt.nvim",
+  --    event = "VeryLazy",
+  --    config = function()
+  --      require("chatgpt").setup
+  -- {
+  --        api_key_cmd = "bw get password b93ef7ad-c459-4a9e-a72c-b0cf00ad4820",
+  --      }
+  --    end,
+  --    dependencies = {
+  --      "MunifTanjim/nui.nvim",
+  --      "nvim-lua/plenary.nvim",
+  --      "nvim-telescope/telescope.nvim",
+  --    },
+  --  },
 
   -- All NvChad plugins are lazy-loaded by default
   -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`

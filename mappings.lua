@@ -75,7 +75,7 @@ M.lspconfig = {
   plugin = true,
   n = {
     ["<M-k>"] = { "<CMD>lua vim.lsp.buf.hover()<CR>", "hover" },
-    ["<leader>lf"] = { "<CMD>lua vim.lsp.buf.format()<CR>", "format" },
+    ["<leader>lf"] = { "<CMD>lua require'conform'.format()<CR>", "format" },
     ["<leader>la"] = { "<CMD>lua vim.lsp.buf.code_action()<CR>", "code action" },
     ["<leader>lr"] = {
       function()
