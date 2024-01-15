@@ -4,7 +4,7 @@ local g = vim.g
 
 g.vscode_snippets_path = vim.fn.stdpath "config" .. "/lua/custom/snips"
 g.loaded_python3_provider = nil
-g.python3_host_prog = vim.fn.stdpath "config" .. "/.direnv/python-3.11/bin/python3"
+g.python3_host_prog = vim.fn.stdpath "config" .. "/lua/custom/.venv/bin/python3"
 
 -- autocmds
 autocmd("FileType", { pattern = "*", command = "setlocal formatoptions-=c formatoptions-=r formatoptions-=o" })
@@ -42,14 +42,12 @@ opt.fillchars = {
   foldopen = "",
   foldclose = "",
   foldsep = " ", -- or "│" to use bar for show fold area
-
 }
 opt.foldcolumn = "1"
 opt.foldnestmax = 1
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldmethod = "expr"
-opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldtext = require "custom.modules.foldtext"
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
