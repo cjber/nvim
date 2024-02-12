@@ -10,16 +10,10 @@ M.treesitter = {
     "yaml",
     "sql",
     "query",
+    "jsonc",
   },
-  indent = {
-    enable = true,
-    -- disable = {
-    --   "python"
-    -- },
-  },
-  highlight = {
-    enable = true,
-  },
+  indent = { enable = true },
+  highlight = { enable = true },
 }
 
 M.telescope = {
