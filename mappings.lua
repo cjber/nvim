@@ -58,6 +58,9 @@ M.general = {
       "close other",
     },
     ["<leader>bd"] = { [[<CMD>lua require("close_buffers").delete({type="this"})<CR>]], "close buffer" },
+
+    -- update
+    ["<leader>u"] = { "<CMD>NvChadUpdate<CR>", "update" },
   },
 
   v = {
@@ -77,6 +80,7 @@ M.lspconfig = {
     ["<M-k>"] = { "<CMD>lua vim.lsp.buf.hover()<CR>", "hover" },
     ["<leader>lf"] = { "<CMD>lua require'conform'.format()<CR>", "format" },
     ["<leader>la"] = { "<CMD>lua vim.lsp.buf.code_action()<CR>", "code action" },
+    ["<leader>lk"] = { "<CMD>lua vim.lsp.buf.hover()<CR>", "code hover" },
     ["<leader>lr"] = {
       function()
         require("nvchad.renamer").open()
@@ -138,14 +142,6 @@ M.jupynium = {
     },
     ["<leader>c"] = { [[<CMD>JupyniumStopSync<CR>]] },
     ["<leader>m"] = { [[<CMD>JupyniumShortsightedToggle<CR>]] },
-  },
-}
-
-M.ufo = {
-  plugin = true,
-  n = {
-    ["zR"] = { [[<CMD>lua require("ufo").openAllFolds()<CR>]] },
-    ["zM"] = { [[<CMD>lua require("ufo").closeAllFolds()<CR>]] },
   },
 }
 
