@@ -16,13 +16,6 @@ local plugins = {
           },
         },
       },
-      -- format & linting
-      -- {
-      --   "nvimtools/none-ls.nvim",
-      --   config = function()
-      --     require "custom.configs.null-ls"
-      --   end,
-      -- },
     },
     config = function()
       require "plugins.configs.lspconfig"
@@ -31,17 +24,10 @@ local plugins = {
     end,
   },
 
-  -- override plugin configs
-  -- {
-  --   "williamboman/mason.nvim",
-  --   opts = overrides.mason,
-  -- },
-
   {
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-nvim-lsp-signature-help" },
     sources = {
-      { name = "jupynium" },
       { name = "nvim_lsp" },
       { name = "nvim_lsp_signature_help" },
       { name = "luasnip" },
@@ -96,9 +82,7 @@ local plugins = {
   },
 
   -- imports
-  -- { import = "custom.configs.extras.ufo" },
   { import = "custom.configs.extras.yarepl" },
-  -- { import = "custom.configs.extras.quarto-nvim" },
 
   -- nvcommunity
   "NvChad/nvcommunity",
@@ -136,24 +120,7 @@ local plugins = {
   },
 
   { "kylechui/nvim-surround", event = "VeryLazy", opts = {} },
-
   { "kazhala/close-buffers.nvim", event = "VeryLazy", opts = {} },
-
-  {
-    "kiyoon/jupynium.nvim",
-    build = "pip3 install .",
-    enabled = vim.fn.isdirectory(vim.fn.expand "~/.config/nvim/.venv"),
-    event = "BufWinEnter *.ju.py",
-    config = function()
-      local jupynium = require "jupynium"
-      jupynium.setup {
-        use_default_keybindings = false,
-        auto_start_server = { enable = true },
-        -- auto_start_sync = { enable = true },
-      }
-      require("core.utils").load_mappings "jupynium"
-    end,
-  },
 
   {
     "luukvbaal/statuscol.nvim",
@@ -184,33 +151,44 @@ local plugins = {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
-  { "Dronakurl/injectme.nvim", lazy = false },
+  -- { "Dronakurl/injectme.nvim", lazy = false },
+
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      signcolumn = false,
+      numhl = true,
+      current_line_blame = true,
+    },
+  },
+
+  {
+    "mfussenegger/nvim-lint",
+    config = function()
+      require("lint").linters_by_ft = {
+        python = { "mypy" },
+        lua = { "luacheck" },
+        sh = { "shellcheck" },
+        markdown = { "vale" },
+        quarto = { "vale" },
+        vim = { "vint" },
+        yaml = { "yamllint" },
+        json = { "jsonlint" },
+        dockerfile = { "hadolint" },
+      }
+    end,
+  },
+  {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = true,
+  },
 
   -- disabled
-  { "lewis6991/gitsigns.nvim", enabled = false },
-  --  {
-  --    "jackmort/chatgpt.nvim",
-  --    event = "VeryLazy",
-  --    config = function()
-  --      require("chatgpt").setup
-  -- {
-  --        api_key_cmd = "bw get password b93ef7ad-c459-4a9e-a72c-b0cf00ad4820",
-  --      }
-  --    end,
-  --    dependencies = {
-  --      "MunifTanjim/nui.nvim",
-  --      "nvim-lua/plenary.nvim",
-  --      "nvim-telescope/telescope.nvim",
-  --    },
-  --  },
+  { "williamboman/mason.nvim", enabled = false },
 
   -- All NvChad plugins are lazy-loaded by default
   -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-  -- {
-  --   "mg979/vim-visual-multi",
-  --   lazy = false,
-  -- }
 }
 
 return plugins
