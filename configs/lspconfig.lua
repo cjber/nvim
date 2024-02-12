@@ -14,16 +14,20 @@ local lspconfig = require "lspconfig"
 -- if you just want default config for the servers then put them in a table
 local servers = {
   -- python
-  -- "pylsp",
-  "ruff_lsp",
   "sourcery",
+  "pylsp",
+
   -- quarto
   "ltex",
-  "grammarly",
+
   -- bash
   "bashls",
+
   -- sql
   "sqlls",
+
+  -- docker
+  "dockerls",
 }
 
 for _, lsp in ipairs(servers) do
@@ -34,6 +38,7 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.ltex.setup {
+  filetypes = { "tex", "quarto", "markdown" },
   settings = {
     ltex = {
       additionalRules = { enablePickyRules = true, languageModel = "~/.ngram/" },
@@ -42,29 +47,6 @@ lspconfig.ltex.setup {
       },
       language = "en-GB",
       checkfrequency = "save",
-    },
-  },
-}
-
-lspconfig.grammarly.setup {
-  filetypes = { "tex", "markdown", "rmd", "quarto" },
-  init_options = {
-    clientId = "client_BaDkMgx4X19X9UxxYRCXZo",
-  },
-}
-
-lspconfig.pylsp.setup {
-  settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = { enabled = false },
-        pyflakes = { enabled = false },
-        pydocstyle = { enabled = false },
-        pylint = { enabled = false },
-        mccabe = { enabled = false },
-        autopep8 = { enabled = false },
-        yapf = { enabled = false },
-      },
     },
   },
 }
