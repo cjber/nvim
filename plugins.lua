@@ -12,7 +12,7 @@ local plugins = {
         opts = {
           formatters_by_ft = {
             lua = { "stylua" },
-            python = { "ruff_format" },
+            python = { "ruff_format", "isort" },
           },
         },
       },
