@@ -81,6 +81,7 @@ M.lspconfig = {
     ["<leader>lf"] = { "<CMD>lua require'conform'.format()<CR>", "format" },
     ["<leader>la"] = { "<CMD>lua vim.lsp.buf.code_action()<CR>", "code action" },
     ["<leader>lk"] = { "<CMD>lua vim.lsp.buf.hover()<CR>", "code hover" },
+    ["<leader>lg"] = { "<CMD>lua require'neogen'.generate()<CR>", "generate doc" },
     ["<leader>lr"] = {
       function()
         require("nvchad.renamer").open()
