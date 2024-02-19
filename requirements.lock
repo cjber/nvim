@@ -9,5 +9,8 @@
 
 -e file:.
 greenlet==3.0.3
+    # via pynvim
 msgpack==1.0.7
+    # via pynvim
 pynvim==0.5.0
+    # via custom
