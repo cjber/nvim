@@ -12,9 +12,36 @@ local plugins = {
         opts = {
           formatters_by_ft = {
             lua = { "stylua" },
-            python = { "ruff_format", "isort" },
+            python = function(bufnr)
+              if require("conform").get_formatter_info("ruff_format", bufnr).available then
+                return { "ruff_format" }
+              else
+                return { "isort", "black" }
+              end
+            end,
+            ["*"] = { "codespell" },
+            ["_"] = { "trim_whitespace" },
+          },
+          format_after_save = {
+            lsp_fallback = true,
           },
         },
+      },
+      {
+        "mfussenegger/nvim-lint",
+        config = function()
+          require("lint").linters_by_ft = {
+            python = { "mypy" },
+            lua = { "luacheck" },
+            sh = { "shellcheck" },
+            markdown = { "vale" },
+            quarto = { "vale" },
+            vim = { "vint" },
+            yaml = { "yamllint" },
+            json = { "jsonlint" },
+            dockerfile = { "hadolint" },
+          }
+        end,
       },
     },
     config = function()
@@ -23,7 +50,6 @@ local plugins = {
       require("core.utils").load_mappings "lspconfig"
     end,
   },
-
   {
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-nvim-lsp-signature-help" },
@@ -162,22 +188,6 @@ local plugins = {
     },
   },
 
-  {
-    "mfussenegger/nvim-lint",
-    config = function()
-      require("lint").linters_by_ft = {
-        python = { "mypy" },
-        lua = { "luacheck" },
-        sh = { "shellcheck" },
-        markdown = { "vale" },
-        quarto = { "vale" },
-        vim = { "vint" },
-        yaml = { "yamllint" },
-        json = { "jsonlint" },
-        dockerfile = { "hadolint" },
-      }
-    end,
-  },
   {
     "danymat/neogen",
     dependencies = "nvim-treesitter/nvim-treesitter",
