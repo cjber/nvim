@@ -53,6 +53,7 @@ opt.foldlevelstart = 99
 opt.foldmethod = "expr"
 vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.wo.foldtext = ""
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 -- spell
 opt.spelllang = "en_gb"
