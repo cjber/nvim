@@ -16,6 +16,7 @@ local servers = {
   -- python
   "sourcery",
   "pylsp",
+  "ruff_lsp",
 
   -- quarto
   "ltex",
