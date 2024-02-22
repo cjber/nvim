@@ -21,6 +21,8 @@ autocmd({ "BufWritePost" }, {
 })
 
 -- options
+opt.conceallevel = 2
+opt.concealcursor = ""
 opt.cmdheight = 0
 opt.pumheight = 10
 opt.linebreak = true
