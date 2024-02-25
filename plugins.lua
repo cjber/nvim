@@ -8,17 +8,16 @@ local plugins = {
     "neovim/nvim-lspconfig",
     dependencies = {
       {
+        "dgagn/diagflow.nvim",
+        event = "LspAttach",
+        opts = {},
+      },
+      {
         "stevearc/conform.nvim",
         opts = {
           formatters_by_ft = {
             lua = { "stylua" },
-            python = function(bufnr)
-              if require("conform").get_formatter_info("ruff_format", bufnr).available then
-                return { "ruff_format" }
-              else
-                return { "isort", "black" }
-              end
-            end,
+            python = { "isort", "ruff_format" },
             ["*"] = { "codespell" },
             ["_"] = { "trim_whitespace" },
           },
@@ -173,7 +172,7 @@ local plugins = {
   {
     "folke/todo-comments.nvim",
     ft = { "python" },
-    cmd = "TodoTrouble",
+    lazy = false,
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
@@ -239,6 +238,7 @@ local plugins = {
       },
     },
   },
+  { "nvim-focus/focus.nvim", lazy = false, opts = { autoresize = { minheight = 15, height = 85 } } },
 
   -- disabled
   { "williamboman/mason.nvim", enabled = false },

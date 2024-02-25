@@ -9,11 +9,11 @@ g.python3_host_prog = vim.fn.stdpath "config" .. "/lua/custom/.venv/bin/python3"
 -- autocmds
 autocmd("FileType", { pattern = "*", command = "setlocal formatoptions-=c formatoptions-=r formatoptions-=o" })
 autocmd("TextYankPost", { pattern = "*", command = "lua vim.highlight.on_yank{}" })
-autocmd("CursorMoved", { pattern = "*", command = "lua vim.lsp.buf.clear_references()" })
-autocmd("CursorHold", {
-  pattern = "*",
-  command = [[lua vim.diagnostic.open_float({border='single', focusable=false, show_header=false, scope='cursor'})]],
-})
+-- autocmd("CursorMoved", { pattern = "*", command = "lua vim.lsp.buf.clear_references()" })
+-- autocmd("CursorHold", {
+--   pattern = "*",
+--   command = [[lua vim.diagnostic.open_float({border='single', focusable=false, show_header=false, scope='cursor'})]],
+-- })
 autocmd({ "BufWritePost" }, {
   callback = function()
     require("lint").try_lint()
