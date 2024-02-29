@@ -28,7 +28,7 @@ opt.pumheight = 10
 opt.linebreak = true
 opt.cursorline = true
 opt.signcolumn = "number"
-opt.shortmess = "aoOstTWAIcqFS"
+opt.shortmess = "aoOstTWAIcqF"
 opt.wildmode = "longest:full,full"
 opt.complete = ".,w,b,u,t,i,kspell"
 

@@ -14,17 +14,44 @@ local plugins = {
       },
       {
         "stevearc/conform.nvim",
-        opts = {
-          formatters_by_ft = {
-            lua = { "stylua" },
-            python = { "isort", "ruff_format" },
-            ["*"] = { "codespell" },
-            ["_"] = { "trim_whitespace" },
-          },
-          format_after_save = {
-            lsp_fallback = true,
-          },
-        },
+        opts = {},
+        event = { "BufNewFile", "BufWritePre" },
+        lazy = true,
+        config = function()
+          require("conform").setup {
+            formatters_by_ft = {
+              python = { "ruff_format", "ruffer" },
+              lua = { "stylua" },
+            },
+            format_on_save = {
+              lsp_fallback = true,
+              timeout_ms = 500,
+            },
+            formatters = {
+              ruffer = {
+                command = "ruff",
+                args = {
+                  "--fix",
+                  "-e",
+                  "--target-version",
+                  "py312",
+                  "--unfixable",
+                  "F401,F841",
+                  "--extend-select",
+                  "ARG,B,C4,DTZ,I,S,UP",
+                  "--stdin-filename",
+                  "$FILENAME",
+                  "-",
+                },
+                stdin = true,
+                cwd = require("conform.util").root_file {
+                  "pyproject.toml",
+                  "ruff.toml",
+                },
+              },
+            },
+          }
+        end,
       },
       {
         "mfussenegger/nvim-lint",
@@ -133,7 +160,7 @@ local plugins = {
     end,
   },
 
-  { "kevinhwang91/nvim-hlslens", opts = {} },
+  -- { "kevinhwang91/nvim-hlslens", opts = {} },
 
   {
     "jiaoshijie/undotree",
@@ -180,6 +207,7 @@ local plugins = {
 
   {
     "lewis6991/gitsigns.nvim",
+    enabled = false,
     opts = {
       signcolumn = false,
       numhl = true,
@@ -239,6 +267,71 @@ local plugins = {
     },
   },
   { "nvim-focus/focus.nvim", lazy = false, opts = { autoresize = { minheight = 15, height = 85 } } },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      routes = {
+        {
+          filter = {
+            event = "msg_show",
+            kind = "",
+          },
+          opts = { skip = true },
+        },
+        {
+          filter = {
+            event = "msg_show",
+            kind = "",
+            find = "written",
+          },
+          opts = { skip = true },
+        },
+      },
+      cmdline = { enabled = true, view = "cmdline_popup" },
+      messages = { enabled = true, view = "mini", view_error = "mini", view_warn = "mini" },
+      redirect = { enabled = true, view = "mini" },
+      notify = { enabled = true, view = "mini" },
+      errors = { enabled = true, view = "mini" },
+      last = { enabled = true, view = "mini" },
+      lsp = {
+        message = { view = "mini" },
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true,
+        },
+        hover = {
+          silent = true,
+        },
+      },
+      presets = {
+        bottom_search = true,
+        command_palette = true,
+        long_message_to_split = true,
+        inc_rename = false,
+        lsp_doc_border = false,
+      },
+      views = {
+        cmdline_popup = {
+          border = { padding = { 0, 1 }, style = "single" },
+          win_options = {
+            winhighlight = { FloatBorder = "FloatBorder", FloatTitle = "FloatBorder" },
+          },
+          position = { row = "30%", col = "50%" },
+        },
+        cmdline_popupmenu = {
+          border = "single",
+          win_options = { winhighlight = { FloatBorder = "FloatBorder" } },
+          position = { row = "50%", col = "50%" },
+        },
+      },
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+  },
 
   -- disabled
   { "williamboman/mason.nvim", enabled = false },

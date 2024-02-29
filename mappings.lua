@@ -41,12 +41,12 @@ M.general = {
     ["<C-space>"] = { "<CMD>bnext<CR>" },
 
     --hlslens
-    ["n"] = { [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]] },
-    ["N"] = {
-      [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
-    },
-    ["*"] = { [[*<Cmd>lua require('hlslens').start()<CR>]] },
-    ["#"] = { [[#<Cmd>lua require('hlslens').start()<CR>]] },
+    -- ["n"] = { [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]] },
+    -- ["N"] = {
+    --   [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+    -- },
+    -- ["*"] = { [[*<Cmd>lua require('hlslens').start()<CR>]] },
+    -- ["#"] = { [[#<Cmd>lua require('hlslens').start()<CR>]] },
 
     -- spell
     ["<leader>ss"] = { "<CMD>set invspell<CR>" },
