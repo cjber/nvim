@@ -40,14 +40,6 @@ M.general = {
     ["<Down>"] = { "<CMD>resize -2<CR>" },
     ["<C-space>"] = { "<CMD>bnext<CR>" },
 
-    --hlslens
-    -- ["n"] = { [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]] },
-    -- ["N"] = {
-    --   [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
-    -- },
-    -- ["*"] = { [[*<Cmd>lua require('hlslens').start()<CR>]] },
-    -- ["#"] = { [[#<Cmd>lua require('hlslens').start()<CR>]] },
-
     -- spell
     ["<leader>ss"] = { "<CMD>set invspell<CR>" },
     ["<leader>sf"] = { "ma[s1z=`a" },
@@ -61,6 +53,10 @@ M.general = {
 
     -- update
     ["<leader>u"] = { "<CMD>NvChadUpdate<CR>", "update" },
+
+    -- hop
+    ["s"] = { "<CMD>HopWord<CR>" },
+    ["S"] = { "<CMD>HopLineStart<CR>" },
   },
 
   v = {
@@ -108,25 +104,10 @@ M.lspconfig = {
   },
 }
 
-M.hop = {
-  plugin = true,
-  n = {
-    ["s"] = { "<CMD>HopWord<CR>" },
-    ["S"] = { "<CMD>HopLineStart<CR>" },
-  },
-}
-
 M.trouble = {
   plugin = true,
   n = {
     ["<leader>le"] = { "<CMD>TroubleToggle<CR>" },
-  },
-}
-
-M.undo = {
-  plugin = true,
-  n = {
-    ["<leader>fu"] = { [[<CMD>lua require("undotree").toggle()<CR>]] },
   },
 }
 
@@ -145,5 +126,4 @@ M.jupynium = {
     ["<leader>m"] = { [[<CMD>JupyniumShortsightedToggle<CR>]] },
   },
 }
-
 return M
