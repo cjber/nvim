@@ -69,10 +69,10 @@ local plugins = {
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = true,
   },
-  { "nvim-focus/focus.nvim", lazy = false, opts = { autoresize = { minheight = 15, height = 85 } } },
 
   -- disabled
   { "williamboman/mason.nvim", enabled = false },
+  { "NvChad/nvterm", enabled = false },
 }
 
 return plugins
