@@ -84,6 +84,7 @@ M.lspconfig = {
       end,
       "LSP rename",
     },
+    ["<leader>ll"] = { "<CMD>Telescope lsp_dynamic_workspace_symbols<CR>", "LSP symbols" },
     ["<leader>ld"] = { "<CMD>Telescope lsp_references<CR>", "LSP references" },
     ["<leader>lw"] = { "<CMD>Telescope lsp_document_symbols<CR>", "LSP symbols" },
     ["<leader>lc"] = {
