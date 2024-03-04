@@ -13,7 +13,7 @@ M.ui = {
 
   cmp = {
     icons = true,
-    lspkind_text = true,
+    lspkind_text = false,
     style = "flat_dark",
     selected_item_bg = "simple",
   },
@@ -30,7 +30,7 @@ M.ui = {
   },
   tabufline = {
     show_numbers = false,
-    enabled = true,
+    enabled = false,
     lazyload = true,
     overriden_modules = function(modules)
       table.remove(modules, 4)
