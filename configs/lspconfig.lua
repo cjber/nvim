@@ -1,5 +1,5 @@
--- local on_attach = require("plugins.configs.lspconfig").on_attach
--- local capabilities = require("plugins.configs.lspconfig").capabilities
+local on_attach = require("plugins.configs.lspconfig").on_attach
+local capabilities = require("plugins.configs.lspconfig").capabilities
 
 vim.diagnostic.config { virtual_text = false, float = { source = "if_many" } }
 
@@ -49,6 +49,14 @@ lspconfig.ltex.setup {
       },
       language = "en-GB",
       checkfrequency = "save",
+    },
+  },
+}
+
+lspconfig.pyright.setup {
+  settings = {
+    python = {
+      analysis = { autoSearchPaths = true, useLibraryCodeForTypes = true, diagnosticMode = "openFilesOnly" },
     },
   },
 }
