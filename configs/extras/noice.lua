@@ -26,7 +26,7 @@ local spec = {
     errors = { enabled = true, view = "mini" },
     last = { enabled = true, view = "mini" },
     lsp = {
-      message = { enabled = false },
+      message = { enabled = true, view = "mini" },
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
         ["vim.lsp.util.stylize_markdown"] = true,

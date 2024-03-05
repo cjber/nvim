@@ -1,6 +1,6 @@
 local spec = {
   "CopilotC-Nvim/CopilotChat.nvim",
-  lazy = false,
+  event = "VeryLazy",
   opts = {
     show_help = "yes",
     debug = false,

@@ -1,6 +1,6 @@
 local spec = {
   "milanglacier/yarepl.nvim",
-  ft = { "python", "quarto" },
+  event = "VeryLazy",
   config = function()
     local yarepl = require "yarepl"
 
