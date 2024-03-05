@@ -32,27 +32,26 @@ local plugins = {
   -- { import = "custom.configs.extras.quarto-nvim" },
   { import = "custom.configs.extras.lint" },
   { import = "custom.configs.extras.statuscol" },
-  { import = "custom.configs.extras.noice" },
+  -- { import = "custom.configs.extras.noice" },
 
   -- nvcommunity
   "NvChad/nvcommunity",
-  { import = "nvcommunity.diagnostics.trouble" },
+  -- { import = "nvcommunity.diagnostics.trouble" },
   { import = "nvcommunity.completion.copilot" },
   { import = "nvcommunity.editor.autosave" },
-  { import = "nvcommunity.editor.telescope-undo" },
-  { import = "nvcommunity.tools.telescope-fzf-native" },
-  { import = "nvcommunity.editor.undo" },
-  { "kevinhwang91/nvim-fundo", dependencies = "kevinhwang91/promise-async" },
+  -- { import = "nvcommunity.editor.telescope-undo" },
+  -- { import = "nvcommunity.tools.telescope-fzf-native" },
+  -- { import = "nvcommunity.editor.undo" },
+  -- { "kevinhwang91/nvim-fundo", dependencies = "kevinhwang91/promise-async" },
 
-  { "freitass/todo.txt-vim", lazy = false, event = "BufWinEnter Todo.txt" },
+  { "freitass/todo.txt-vim", event = "BufWinEnter Todo.txt" },
 
-  {
-    "folke/todo-comments.nvim",
-    ft = { "python" },
-    lazy = false,
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
-  },
+  -- {
+  --   "folke/todo-comments.nvim",
+  --   ft = { "python" },
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   opts = {},
+  -- },
 
   {
     "lewis6991/gitsigns.nvim",
@@ -68,6 +67,21 @@ local plugins = {
     "danymat/neogen",
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = true,
+  },
+  {
+    "rcarriga/nvim-notify",
+    event = "VeryLazy",
+    config = function()
+      vim.notify = require "notify"
+      require("notify").setup {
+        stages = "fade",
+        render = "wrapped-compact",
+        timeout = 200,
+        on_open = function(win)
+          vim.api.nvim_win_set_config(win, { border = "single" })
+        end,
+      }
+    end,
   },
 
   -- disabled
