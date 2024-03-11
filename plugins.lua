@@ -44,7 +44,18 @@ local plugins = {
   -- { import = "nvcommunity.editor.undo" },
   -- { "kevinhwang91/nvim-fundo", dependencies = "kevinhwang91/promise-async" },
 
-  { "freitass/todo.txt-vim", event = "BufWinEnter Todo.txt" },
+  { "freitass/todo.txt-vim", lazy = false },
+  {
+    "stevearc/oil.nvim",
+    lazy = false,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      columns = { "icon", "permissions", "size", "mtime" },
+      delete_to_trash = true,
+      keymaps_help = { border = "single" },
+      view_options = { show_hidden = true },
+    },
+  },
 
   -- {
   --   "folke/todo-comments.nvim",
