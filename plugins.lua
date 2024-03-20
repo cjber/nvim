@@ -5,6 +5,25 @@ local plugins = {
 
   -- base overrides
   { "nvim-treesitter/nvim-treesitter", opts = overrides.treesitter },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    event = "VeryLazy",
+    config = function()
+      require("nvim-treesitter.configs").setup {
+        textobjects = {
+          move = {
+            enable = true,
+            set_jumps = true, -- whether to set jumps in the jumplist
+            goto_next = { ["<A-j>"] = "@function.outer" },
+            goto_previous = {
+              ["<A-k>"] = "@function.outer",
+            },
+          },
+        },
+      }
+    end,
+  },
   { "nvim-tree/nvim-tree.lua", opts = overrides.nvimtree },
   { "nvim-telescope/telescope.nvim", opts = overrides.telescope },
 
@@ -36,7 +55,7 @@ local plugins = {
 
   -- nvcommunity
   "NvChad/nvcommunity",
-  -- { import = "nvcommunity.diagnostics.trouble" },
+  { import = "nvcommunity.diagnostics.trouble" },
   { import = "nvcommunity.completion.copilot" },
   { import = "nvcommunity.editor.autosave" },
   -- { import = "nvcommunity.editor.telescope-undo" },

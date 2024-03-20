@@ -6,7 +6,8 @@ local spec = {
   config = function()
     require("conform").setup {
       formatters_by_ft = {
-        python = { "ruff_format", "ruffer" },
+        python = { "ruff_format", "ruffer", "injected" },
+        -- sql = { "sqlfmt" },
         lua = { "stylua" },
       },
       formatters = {

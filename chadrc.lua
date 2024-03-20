@@ -30,7 +30,7 @@ M.ui = {
   },
   tabufline = {
     show_numbers = false,
-    enabled = false,
+    enabled = true,
     lazyload = true,
     overriden_modules = function(modules)
       table.remove(modules, 4)
@@ -38,7 +38,7 @@ M.ui = {
   },
 
   nvdash = {
-    load_on_startup = true,
+    load_on_startup = false,
     buttons = {
       { "  Find File", "Spc f f", "Telescope find_files" },
       { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },

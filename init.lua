@@ -16,7 +16,7 @@ autocmd({ "BufWritePost" }, {
 })
 
 -- localleader
-vim.g.maplocalleader = ","
+vim.g.maplocalleader = " "
 -- options
 opt.conceallevel = 2
 opt.concealcursor = ""

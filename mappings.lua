@@ -73,7 +73,7 @@ M.general = {
 M.lspconfig = {
   plugin = true,
   n = {
-    ["<M-k>"] = { "<CMD>lua vim.lsp.buf.hover()<CR>", "hover" },
+    -- ["<M-k>"] = { "<CMD>lua vim.lsp.buf.hover()<CR>", "hover" },
     ["<leader>lf"] = { "<CMD>lua require'conform'.format()<CR>", "format" },
     ["<leader>la"] = { "<CMD>lua vim.lsp.buf.code_action()<CR>", "code action" },
     ["<leader>lk"] = { "<CMD>lua vim.lsp.buf.hover()<CR>", "code hover" },
@@ -125,6 +125,13 @@ M.jupynium = {
     },
     ["<leader>c"] = { [[<CMD>JupyniumStopSync<CR>]] },
     ["<leader>m"] = { [[<CMD>JupyniumShortsightedToggle<CR>]] },
+  },
+}
+
+M.todotxt = {
+  plugin = true,
+  n = {
+    ["<leader>tt"] = { [[<CMD>ToDoTxtTasksToggle<CR>]] },
   },
 }
 return M
