@@ -24,7 +24,7 @@ M.disabled = {
 
 M.general = {
   n = {
-    ["q:"] = { "<CMD>q" },
+    ["q:"] = { "<CMD>q<CR>" },
     ["Q"] = { "<Nop>" },
     ["M"] = { "<CMD>join<CR>" },
     ["J"] = { "}" },
@@ -74,6 +74,7 @@ M.lspconfig = {
   plugin = true,
   n = {
     -- ["<M-k>"] = { "<CMD>lua vim.lsp.buf.hover()<CR>", "hover" },
+    ["<leader>le"] = { "<CMD>TroubleToggle<CR>" },
     ["<leader>lf"] = { "<CMD>lua require'conform'.format()<CR>", "format" },
     ["<leader>la"] = { "<CMD>lua vim.lsp.buf.code_action()<CR>", "code action" },
     ["<leader>lk"] = { "<CMD>lua vim.lsp.buf.hover()<CR>", "code hover" },
@@ -105,33 +106,4 @@ M.lspconfig = {
   },
 }
 
-M.trouble = {
-  plugin = true,
-  n = {
-    ["<leader>le"] = { "<CMD>TroubleToggle<CR>" },
-  },
-}
-
-M.jupynium = {
-  plugin = true,
-  n = {
-    ["<leader>x"] = { [[<CMD>JupyniumExecuteSelectedCells<CR>]] },
-    ["<leader>s"] = { [[<CMD>JupyniumStartAndAttachToServerInTerminal<CR>]] },
-    ["<leader>d"] = {
-      function()
-        local filename_wo_ext = vim.fn.expand "%:r:r"
-        vim.cmd([[JupyniumStartSync ]] .. filename_wo_ext)
-      end,
-    },
-    ["<leader>c"] = { [[<CMD>JupyniumStopSync<CR>]] },
-    ["<leader>m"] = { [[<CMD>JupyniumShortsightedToggle<CR>]] },
-  },
-}
-
-M.todotxt = {
-  plugin = true,
-  n = {
-    ["<leader>tt"] = { [[<CMD>ToDoTxtTasksToggle<CR>]] },
-  },
-}
 return M

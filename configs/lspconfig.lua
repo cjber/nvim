@@ -14,7 +14,7 @@ local lspconfig = require "lspconfig"
 -- if you just want default config for the servers then put them in a table
 local servers = {
   -- python
-  "basedpyright",
+  "pyright",
   "sourcery",
   "ruff_lsp",
   -- "pylsp",
@@ -53,7 +53,7 @@ lspconfig.ltex.setup {
   },
 }
 
-lspconfig.basedpyright.setup {
+lspconfig.pyright.setup {
   settings = {
     python = {
       analysis = { autoSearchPaths = true, useLibraryCodeForTypes = true, diagnosticMode = "openFilesOnly" },
