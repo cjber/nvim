@@ -10,7 +10,6 @@ local spec = {
   build = function()
     vim.notify "Please update the remote plugins by running ':UpdateRemotePlugins', then restart Neovim."
   end,
-  event = "VeryLazy",
   keys = {
     { "<leader>cc", "<cmd>CopilotChat<cr>", desc = "CopilotChat" },
   },

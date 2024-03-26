@@ -7,14 +7,23 @@ local spec = {
     opts.completion = {
       completeopt = "menu,menuone,noselect,noinsert",
     }
-    table.insert(opts.sources, { name = "copilot" })
 
     opts.mapping["<CR>"] = cmp.mapping.confirm { select = false }
     opts.view = { docs = { auto_open = false } }
 
-    -- opts.view = {
-    --   entries = { name = "custom", selection_order = "near_cursor" },
-    -- }
+    opts.sources = {
+      { name = "luasnip" },
+      { name = "nvim_lsp" },
+      { name = "nvim_lua" },
+      {
+        name = "path",
+        option = {
+          get_cwd = function()
+            return vim.fn.getcwd()
+          end,
+        },
+      },
+    }
 
     return opts
   end,
