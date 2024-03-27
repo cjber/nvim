@@ -57,6 +57,7 @@ local plugins = {
   "NvChad/nvcommunity",
   { import = "nvcommunity.diagnostics.trouble" },
   { import = "nvcommunity.completion.copilot" },
+  { import = "nvcommunity.completion.codeium" },
   { import = "nvcommunity.editor.autosave" },
   -- { import = "nvcommunity.editor.telescope-undo" },
   -- { import = "nvcommunity.tools.telescope-fzf-native" },
@@ -116,7 +117,7 @@ local plugins = {
 
   -- disabled
   { "williamboman/mason.nvim", enabled = false },
-  { "NvChad/nvterm", enabled = false },
+  -- { "NvChad/nvterm", enabled = false },
 }
 
 return plugins
