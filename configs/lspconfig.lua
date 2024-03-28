@@ -15,7 +15,7 @@ local lspconfig = require "lspconfig"
 local servers = {
   -- python
   -- "pyright",
-  "basedpyright",
+  "pyright",
   "sourcery",
   "ruff_lsp",
   -- "pylsp",
@@ -54,17 +54,23 @@ lspconfig.ltex.setup {
   },
 }
 
--- lspconfig.pyright.setup {
---   settings = {
---     python = {
---       analysis = { autoSearchPaths = true, useLibraryCodeForTypes = true, diagnosticMode = "openFilesOnly" },
---     },
---   },
--- }
-lspconfig.basedpyright.setup {
+lspconfig.pyright.setup {
   settings = {
-    basedpyright = {
-      typeCheckingMode = "standard",
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "openFilesOnly",
+        typeCheckingMode = "basic",
+      },
     },
   },
 }
+
+-- lspconfig.basedpyright.setup {
+--   settings = {
+--     basedpyright = {
+--       typeCheckingMode = "standard",
+--     },
+--   },
+-- }
