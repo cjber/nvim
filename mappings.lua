@@ -57,6 +57,9 @@ M.general = {
     -- hop
     ["s"] = { "<CMD>HopWord<CR>" },
     ["S"] = { "<CMD>HopLineStart<CR>" },
+
+    -- flote
+    ["<leader>fm"] = { "<CMD>Flote<CR>", "open project notes" },
   },
 
   v = {

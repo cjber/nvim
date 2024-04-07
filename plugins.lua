@@ -114,6 +114,7 @@ local plugins = {
       }
     end,
   },
+  { "JellyApple102/flote.nvim", event = "VeryLazy", opts = { window_border = "single" } },
 
   -- disabled
   { "williamboman/mason.nvim", enabled = false },
