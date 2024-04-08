@@ -59,8 +59,8 @@ local plugins = {
   { import = "nvcommunity.completion.copilot" },
   { import = "nvcommunity.completion.codeium" },
   { import = "nvcommunity.editor.autosave" },
+  { import = "nvcommunity.tools.telescope-fzf-native" },
   -- { import = "nvcommunity.editor.telescope-undo" },
-  -- { import = "nvcommunity.tools.telescope-fzf-native" },
   -- { import = "nvcommunity.editor.undo" },
   -- { "kevinhwang91/nvim-fundo", dependencies = "kevinhwang91/promise-async" },
 
