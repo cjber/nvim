@@ -60,6 +60,9 @@ M.general = {
 
     -- flote
     ["<leader>fm"] = { "<CMD>Flote<CR>", "open project notes" },
+
+    -- time tracker
+    ["<leader>tt"] = { "<CMD>TimeTracker<CR>", "time tracker" },
   },
 
   v = {

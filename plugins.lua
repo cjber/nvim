@@ -25,7 +25,6 @@ local plugins = {
     end,
   },
   { "nvim-tree/nvim-tree.lua", opts = overrides.nvimtree },
-  { "nvim-telescope/telescope.nvim", opts = overrides.telescope },
 
   -- extra plugins
   { "smoka7/hop.nvim", event = "VeryLazy", opts = {} },
@@ -38,6 +37,12 @@ local plugins = {
     config = function()
       require("project_nvim").setup { sinlent_chdir = true, detection_methods = { "pattern" } }
     end,
+  },
+  {
+    "folke/trouble.nvim",
+    cmd = { "Trouble", "TroubleToggle", "TodoTrouble" },
+    dependencies = { { "folkee/todo-comments.nvim", opts = {} } },
+    opts = {},
   },
 
   { "dgagn/diagflow.nvim", event = "LspAttach", opts = {} },
@@ -55,7 +60,6 @@ local plugins = {
 
   -- nvcommunity
   "NvChad/nvcommunity",
-  { import = "nvcommunity.diagnostics.trouble" },
   { import = "nvcommunity.completion.copilot" },
   { import = "nvcommunity.completion.codeium" },
   { import = "nvcommunity.editor.autosave" },
@@ -65,17 +69,17 @@ local plugins = {
   -- { "kevinhwang91/nvim-fundo", dependencies = "kevinhwang91/promise-async" },
 
   { "freitass/todo.txt-vim", lazy = false },
-  {
-    "stevearc/oil.nvim",
-    lazy = false,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      columns = { "icon", "permissions", "size", "mtime" },
-      delete_to_trash = true,
-      keymaps_help = { border = "single" },
-      view_options = { show_hidden = true },
-    },
-  },
+  -- {
+  --   "stevearc/oil.nvim",
+  --   lazy = false,
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  --   opts = {
+  --     columns = { "icon", "permissions", "size", "mtime" },
+  --     delete_to_trash = true,
+  --     keymaps_help = { border = "single" },
+  --     view_options = { show_hidden = true },
+  --   },
+  -- },
 
   -- {
   --   "folke/todo-comments.nvim",
@@ -94,11 +98,11 @@ local plugins = {
     },
   },
 
-  {
-    "danymat/neogen",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config = true,
-  },
+  -- {
+  --   "danymat/neogen",
+  --   dependencies = "nvim-treesitter/nvim-treesitter",
+  --   config = true,
+  -- },
   {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
@@ -115,6 +119,7 @@ local plugins = {
     end,
   },
   { "JellyApple102/flote.nvim", event = "VeryLazy", opts = { window_border = "single" } },
+  { "3rd/time-tracker.nvim", event = "VeryLazy", opts = {} },
 
   -- disabled
   { "williamboman/mason.nvim", enabled = false },
