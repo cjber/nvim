@@ -41,7 +41,7 @@ local plugins = {
   {
     "folke/trouble.nvim",
     cmd = { "Trouble", "TroubleToggle", "TodoTrouble" },
-    dependencies = { { "folkee/todo-comments.nvim", opts = {} } },
+    dependencies = { { "folke/todo-comments.nvim", opts = {} } },
     opts = {},
   },
 
@@ -98,11 +98,11 @@ local plugins = {
     },
   },
 
-  -- {
-  --   "danymat/neogen",
-  --   dependencies = "nvim-treesitter/nvim-treesitter",
-  --   config = true,
-  -- },
+  {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = true,
+  },
   {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
