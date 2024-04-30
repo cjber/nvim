@@ -24,7 +24,7 @@ pynvim==0.5.0
     # via custom
 python-dotenv==1.0.1
     # via custom
-regex==2024.4.16
+regex==2024.4.28
     # via tiktoken
 requests==2.31.0
     # via custom
