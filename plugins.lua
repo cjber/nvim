@@ -104,6 +104,17 @@ local plugins = {
     config = true,
   },
   {
+    "toppair/peek.nvim",
+    event = "VeryLazy",
+    opts = {},
+    build = "deno task --quiet build:fast",
+    config = function()
+      require("peek").setup()
+      vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+      vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+    end,
+  },
+  {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
     config = function()
