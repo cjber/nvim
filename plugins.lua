@@ -24,7 +24,6 @@ local plugins = {
       }
     end,
   },
-  { "nvim-tree/nvim-tree.lua", opts = overrides.nvimtree },
 
   -- extra plugins
   { "smoka7/hop.nvim", event = "VeryLazy", opts = {} },
@@ -69,24 +68,17 @@ local plugins = {
   -- { "kevinhwang91/nvim-fundo", dependencies = "kevinhwang91/promise-async" },
 
   { "freitass/todo.txt-vim", lazy = false },
-  -- {
-  --   "stevearc/oil.nvim",
-  --   lazy = false,
-  --   dependencies = { "nvim-tree/nvim-web-devicons" },
-  --   opts = {
-  --     columns = { "icon", "permissions", "size", "mtime" },
-  --     delete_to_trash = true,
-  --     keymaps_help = { border = "single" },
-  --     view_options = { show_hidden = true },
-  --   },
-  -- },
-
-  -- {
-  --   "folke/todo-comments.nvim",
-  --   ft = { "python" },
-  --   dependencies = { "nvim-lua/plenary.nvim" },
-  --   opts = {},
-  -- },
+  {
+    "stevearc/oil.nvim",
+    lazy = false,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      columns = { "icon", "permissions", "size", "mtime" },
+      delete_to_trash = true,
+      keymaps_help = { border = "single" },
+      view_options = { show_hidden = true },
+    },
+  },
 
   {
     "lewis6991/gitsigns.nvim",
@@ -133,6 +125,7 @@ local plugins = {
   { "3rd/time-tracker.nvim", event = "VeryLazy", opts = {} },
 
   -- disabled
+  { "nvim-tree/nvim-tree.lua", enabled = false },
   { "williamboman/mason.nvim", enabled = false },
   -- { "NvChad/nvterm", enabled = false },
 }
