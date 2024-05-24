@@ -122,7 +122,7 @@ local plugins = {
     end,
   },
   { "JellyApple102/flote.nvim", event = "VeryLazy", opts = { window_border = "single" } },
-  { "3rd/time-tracker.nvim", event = "VeryLazy", opts = {} },
+  -- { "3rd/time-tracker.nvim", event = "VeryLazy", opts = {} },
 
   -- disabled
   { "nvim-tree/nvim-tree.lua", enabled = false },

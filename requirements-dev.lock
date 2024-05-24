@@ -6,6 +6,7 @@
 #   features: []
 #   all-features: false
 #   with-sources: false
+#   generate-hashes: false
 
 -e file:.
 certifi==2024.2.2
@@ -24,9 +25,9 @@ pynvim==0.5.0
     # via custom
 python-dotenv==1.0.1
     # via custom
-regex==2024.5.10
+regex==2024.5.15
     # via tiktoken
-requests==2.31.0
+requests==2.32.2
     # via custom
     # via tiktoken
 tiktoken==0.7.0
