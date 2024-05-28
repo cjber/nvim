@@ -17,7 +17,7 @@ local servers = {
   -- "pyright",
   "pyright",
   "sourcery",
-  "ruff_lsp",
+  "ruff",
   -- "pylsp",
 
   -- quarto
@@ -54,10 +54,21 @@ lspconfig.ltex.setup {
   },
 }
 
+local on_attach = function(client, bufnr)
+  if client.name == "ruff" then
+    -- Disable hover in favor of Pyright
+    client.server_capabilities.hoverProvider = false
+  end
+end
+
 lspconfig.pyright.setup {
   settings = {
+    pyright = {
+      disableOrganizeImportrs = true,
+    },
     python = {
       analysis = {
+        ignore = { "*" },
         autoSearchPaths = true,
         useLibraryCodeForTypes = true,
         diagnosticMode = "openFilesOnly",
