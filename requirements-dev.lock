@@ -9,7 +9,7 @@
 #   generate-hashes: false
 
 -e file:.
-certifi==2024.2.2
+certifi==2024.6.2
     # via requests
 charset-normalizer==3.3.2
     # via requests
@@ -19,7 +19,7 @@ idna==3.7
     # via requests
 msgpack==1.0.8
     # via pynvim
-prompt-toolkit==3.0.43
+prompt-toolkit==3.0.47
     # via custom
 pynvim==0.5.0
     # via custom
@@ -27,7 +27,7 @@ python-dotenv==1.0.1
     # via custom
 regex==2024.5.15
     # via tiktoken
-requests==2.32.2
+requests==2.32.3
     # via custom
     # via tiktoken
 tiktoken==0.7.0
