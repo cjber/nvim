@@ -14,11 +14,9 @@ local lspconfig = require "lspconfig"
 -- if you just want default config for the servers then put them in a table
 local servers = {
   -- python
-  -- "pyright",
   "pyright",
   "sourcery",
   "ruff",
-  -- "pylsp",
 
   -- quarto
   "ltex",
@@ -40,6 +38,8 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+lspconfig.ruff.setup {}
+
 lspconfig.ltex.setup {
   filetypes = { "tex", "quarto", "markdown" },
   settings = {
@@ -54,17 +54,10 @@ lspconfig.ltex.setup {
   },
 }
 
-local on_attach = function(client, bufnr)
-  if client.name == "ruff" then
-    -- Disable hover in favor of Pyright
-    client.server_capabilities.hoverProvider = false
-  end
-end
-
 lspconfig.pyright.setup {
   settings = {
     pyright = {
-      disableOrganizeImportrs = true,
+      disableOrganizeImports = true,
     },
     python = {
       analysis = {
@@ -77,11 +70,3 @@ lspconfig.pyright.setup {
     },
   },
 }
-
--- lspconfig.basedpyright.setup {
---   settings = {
---     basedpyright = {
---       typeCheckingMode = "standard",
---     },
---   },
--- }
