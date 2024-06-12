@@ -81,7 +81,7 @@ M.lspconfig = {
   plugin = true,
   n = {
     -- ["<M-k>"] = { "<CMD>lua vim.lsp.buf.hover()<CR>", "hover" },
-    ["<leader>le"] = { "<CMD>TroubleToggle<CR>" },
+    ["<leader>le"] = { "<CMD>Trouble diagnostics toggle<CR>" },
     ["<leader>lf"] = { "<CMD>lua require'conform'.format()<CR>", "format" },
     ["<leader>la"] = { "<CMD>lua vim.lsp.buf.code_action()<CR>", "code action" },
     ["<leader>lk"] = { "<CMD>lua vim.lsp.buf.hover()<CR>", "code hover" },
@@ -92,9 +92,8 @@ M.lspconfig = {
       end,
       "LSP rename",
     },
-    ["<leader>ll"] = { "<CMD>Telescope lsp_dynamic_workspace_symbols<CR>", "LSP symbols" },
-    ["<leader>ld"] = { "<CMD>Telescope lsp_references<CR>", "LSP references" },
-    ["<leader>lw"] = { "<CMD>Telescope lsp_document_symbols<CR>", "LSP symbols" },
+    ["<leader>ll"] = { "<CMD>Trouble lsp_document_symbols toggle<CR>", "LSP symbols" },
+    ["<leader>ld"] = { "<CMD>Trouble lsp_references toggle<CR>", "LSP references" },
     ["<leader>lc"] = {
       function()
         local ok, start = require("indent_blankline.utils").get_current_context(
