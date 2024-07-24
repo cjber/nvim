@@ -38,7 +38,7 @@ M.general = {
     ["<C-l>"] = { "<C-w>l" },
     ["<Up>"] = { "<CMD>resize +2<CR>" },
     ["<Down>"] = { "<CMD>resize -2<CR>" },
-    ["<C-space>"] = { "<CMD>bnext<CR>" },
+    -- ["<C-space>"] = { "<CMD>bnext<CR>" },
     ["<C-n>"] = { "<CMD>Oil<CR>" },
 
     -- spell

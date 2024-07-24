@@ -42,11 +42,11 @@ local spec = {
     },
     views = {
       cmdline_popup = {
-        border = { padding = { 0, 1 }, style = "single" },
+        border = { padding = { 0, 1 }, style = "none" },
         win_options = {
           winhighlight = { FloatBorder = "FloatBorder", FloatTitle = "FloatBorder" },
         },
-        position = { row = "30%", col = "50%" },
+        position = { row = "99%", col = "0%" },
       },
       cmdline_popupmenu = {
         border = "single",

@@ -9,7 +9,7 @@
 #   generate-hashes: false
 
 -e file:.
-certifi==2024.6.2
+certifi==2024.7.4
     # via requests
 charset-normalizer==3.3.2
     # via requests
@@ -32,7 +32,7 @@ requests==2.32.3
     # via tiktoken
 tiktoken==0.7.0
     # via custom
-urllib3==2.2.1
+urllib3==2.2.2
     # via requests
 wcwidth==0.2.13
     # via prompt-toolkit

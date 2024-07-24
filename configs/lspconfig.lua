@@ -16,7 +16,7 @@ local servers = {
   -- python
   "pyright",
   "sourcery",
-  "ruff",
+  -- "ruff",
 
   -- quarto
   "ltex",
@@ -37,8 +37,6 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
-
-lspconfig.ruff.setup {}
 
 lspconfig.ltex.setup {
   filetypes = { "tex", "quarto", "markdown" },
@@ -61,11 +59,11 @@ lspconfig.pyright.setup {
     },
     python = {
       analysis = {
-        ignore = { "*" },
+        -- ignore = { "*" },
         autoSearchPaths = true,
         useLibraryCodeForTypes = true,
         diagnosticMode = "openFilesOnly",
-        typeCheckingMode = "basic",
+        typeCheckingMode = "off",
       },
     },
   },

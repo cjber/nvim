@@ -55,7 +55,7 @@ local plugins = {
   -- { import = "custom.configs.extras.quarto-nvim" },
   { import = "custom.configs.extras.lint" },
   { import = "custom.configs.extras.statuscol" },
-  -- { import = "custom.configs.extras.noice" },
+  { import = "custom.configs.extras.noice" },
 
   -- nvcommunity
   "NvChad/nvcommunity",
@@ -82,7 +82,7 @@ local plugins = {
 
   {
     "lewis6991/gitsigns.nvim",
-    enabled = false,
+    enabled = true,
     opts = {
       signcolumn = false,
       numhl = true,
