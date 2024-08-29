@@ -34,7 +34,7 @@ local plugins = {
     "ahmedkhalf/project.nvim",
     lazy = false,
     config = function()
-      require("project_nvim").setup { sinlent_chdir = true, detection_methods = { "pattern" } }
+      require("project_nvim").setup { silent_chdir = true, detection_methods = { "pattern" } }
     end,
   },
   {
@@ -51,21 +51,38 @@ local plugins = {
   { import = "custom.configs.extras.yarepl" },
   { import = "custom.configs.extras.lspconfig" },
   { import = "custom.configs.extras.conform" },
-  { import = "custom.configs.extras.copilot_chat" },
-  -- { import = "custom.configs.extras.quarto-nvim" },
   { import = "custom.configs.extras.lint" },
   { import = "custom.configs.extras.statuscol" },
-  { import = "custom.configs.extras.noice" },
 
   -- nvcommunity
   "NvChad/nvcommunity",
-  { import = "nvcommunity.completion.copilot" },
   { import = "nvcommunity.completion.codeium" },
   { import = "nvcommunity.editor.autosave" },
   { import = "nvcommunity.tools.telescope-fzf-native" },
-  -- { import = "nvcommunity.editor.telescope-undo" },
-  -- { import = "nvcommunity.editor.undo" },
-  -- { "kevinhwang91/nvim-fundo", dependencies = "kevinhwang91/promise-async" },
+
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    build = "make", -- This is Optional, only if you want to use tiktoken_core to calculate tokens count
+    opts = {
+      provider = "openai",
+    },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "HakonHarnes/img-clip.nvim",
+      --- The below is optional, make sure to setup it properly if you have lazy=true
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
+  },
 
   { "freitass/todo.txt-vim", lazy = false },
   {
@@ -84,9 +101,17 @@ local plugins = {
     "lewis6991/gitsigns.nvim",
     enabled = true,
     opts = {
-      signcolumn = false,
-      numhl = true,
+      signcolumn = true,
       current_line_blame = true,
+      signs = {
+        add = { text = "│" },
+        change = { text = "│" },
+        delete = { text = "│" },
+        topdelete = { text = "┆" },
+        changedelete = { text = "┆" },
+        untracked = { text = "┆" },
+      },
+      signs_staged_enable = false,
     },
   },
 
@@ -122,12 +147,10 @@ local plugins = {
     end,
   },
   { "JellyApple102/flote.nvim", event = "VeryLazy", opts = { window_border = "single" } },
-  -- { "3rd/time-tracker.nvim", event = "VeryLazy", opts = {} },
 
   -- disabled
   { "nvim-tree/nvim-tree.lua", enabled = false },
   { "williamboman/mason.nvim", enabled = false },
-  -- { "NvChad/nvterm", enabled = false },
 }
 
 return plugins
