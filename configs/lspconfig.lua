@@ -1,7 +1,12 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
-vim.diagnostic.config { virtual_text = false, float = { source = "if_many" } }
+vim.diagnostic.config {
+  virtual_text = false,
+  underline = true,
+  update_in_insert = false,
+  float = { source = "if_many" },
+}
 
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
