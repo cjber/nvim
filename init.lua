@@ -15,8 +15,9 @@ autocmd({ "BufWritePost" }, {
   end,
 })
 
+
 -- localleader
-vim.g.maplocalleader = " "
+g.maplocalleader = " "
 -- options
 opt.conceallevel = 2
 opt.concealcursor = ""
@@ -24,7 +25,7 @@ opt.cmdheight = 0
 opt.pumheight = 10
 opt.linebreak = true
 opt.cursorline = true
-opt.signcolumn = "number"
+-- opt.signcolumn = "number"
 opt.shortmess = "aoOstTWAIcqF"
 opt.wildmode = "longest:full,full"
 opt.complete = ".,w,b,u,t,i,kspell"
@@ -46,7 +47,7 @@ opt.fillchars = {
   foldsep = " ", -- or "│" to use bar for show fold area
 }
 opt.foldcolumn = "1"
-opt.foldnestmax = 1
+-- opt.foldnestmax = 2
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldmethod = "expr"
