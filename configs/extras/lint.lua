@@ -11,6 +11,7 @@ local spec = {
       yaml = { "yamllint" },
       json = { "jsonlint" },
       dockerfile = { "hadolint" },
+      javascript = { "eslint" },
     }
   end,
 }

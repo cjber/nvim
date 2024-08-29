@@ -9,6 +9,7 @@ local spec = {
         python = { "isort", "black", "injected" },
         sql = { "sqlfmt" },
         lua = { "stylua" },
+        javascript = { "prettier" },
       },
     }
   end,
