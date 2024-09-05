@@ -61,6 +61,17 @@ local plugins = {
   { import = "nvcommunity.tools.telescope-fzf-native" },
 
   {
+    "toppair/peek.nvim",
+    event = { "VeryLazy" },
+    build = "deno task --quiet build:fast",
+    config = function()
+      require("peek").setup()
+      vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+      vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+    end,
+  },
+
+  {
     "yetone/avante.nvim",
     event = "VeryLazy",
     build = "make", -- This is Optional, only if you want to use tiktoken_core to calculate tokens count
